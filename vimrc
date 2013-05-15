@@ -25,6 +25,7 @@ Bundle 'epeli/slimux'
 Bundle 'tpope/vim-surround'
 Bundle 'godlygeek/csapprox'
 Bundle 'nerdtree-ack'
+Bundle 'vim-stylus'
 
 
 filetype plugin indent on
