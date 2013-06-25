@@ -26,7 +26,8 @@ NeoBundle 'thinca/vim-unite-history'
 NeoBundle 'mileszs/ack.vim'
 
 " Code complete
-NeoBundle 'Valloric/YouCompleteMe'
+NeoBundle 'Shougo/neocomplcache.vim'
+"NeoBundle 'Valloric/YouCompleteMe'
 
 " Snippets
 "NeoBundle 'Shougo/neosnippet'
@@ -61,16 +62,9 @@ NeoBundle 'Shougo/vimfiler.vim'
 
 filetype plugin indent on
 
-" Set augroup
-augroup MyAutoCmd
-  autocmd!
-augroup END
-
 syntax on
 
 set t_Co=256
-
-set lazyredraw
 
 " Theme
 syntax enable
@@ -171,29 +165,29 @@ set scrolloff=3					" min lines to keep above and below cursor
 
     " Neocomplcache {
         " Disable AutoComplPop. Comment out this line if AutoComplPop is not installed.
-        "let g:acp_enableAtStartup = 0
+        let g:acp_enableAtStartup = 0
         " Launches neocomplcache automatically on vim startup.
-        "let g:neocomplcache_enable_at_startup = 1
+        let g:neocomplcache_enable_at_startup = 1
         " Use smartcase.
-        "let g:neocomplcache_enable_smart_case = 1
+        let g:neocomplcache_enable_smart_case = 1
         " Use camel case completion.
-        "let g:neocomplcache_enable_camel_case_completion = 1
+        let g:neocomplcache_enable_camel_case_completion = 1
         " Use underscore completion.
-        "let g:neocomplcache_enable_underbar_completion = 1
+        let g:neocomplcache_enable_underbar_completion = 1
         " Sets minimum char length of syntax keyword.
-        "let g:neocomplcache_min_syntax_length = 3
+        let g:neocomplcache_min_syntax_length = 3
         " buffer file name pattern that locks neocomplcache. e.g. ku.vim or fuzzyfinder 
-        "let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+        let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
-        "autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-        "autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-        "autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-        "autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-        "autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+        autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+        autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+        autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+        autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+        autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-        "if !exists('g:neocomplcache_omni_patterns')
-            "let g:neocomplcache_omni_patterns = {}
-        "endif
+        if !exists('g:neocomplcache_omni_patterns')
+            let g:neocomplcache_omni_patterns = {}
+        endif
     " }
     
     " Unite {
@@ -221,177 +215,4 @@ set scrolloff=3					" min lines to keep above and below cursor
         endif
     " }
 " }
-
-" Use the fuzzy matcher for everything
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-
-" Use the rank sorter for everything
-call unite#filters#sorter_default#use(['sorter_rank'])
-
-" Set up some custom ignores
-call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
-      \ 'ignore_pattern', join([
-      \ '\.git/',
-      \ 'git5/.*/review/',
-      \ 'google/obj/',
-      \ ], '\|'))
-
-" Map space to the prefix for Unite
-nnoremap [unite] <Nop>
-nmap <space> [unite]
-
-" General fuzzy search
-nnoremap <silent> [unite]<space> :<C-u>Unite
-      \ -buffer-name=files buffer file_mru bookmark file_rec/async<CR>
-
-" Quick registers
-nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
-
-" Quick buffer and mru
-nnoremap <silent> [unite]u :<C-u>Unite -buffer-name=buffers buffer file_mru<CR>
-
-" Quick yank history
-nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yanks history/yank<CR>
-
-" Quick outline
-nnoremap <silent> [unite]o :<C-u>Unite -buffer-name=outline -vertical outline<CR>
-
-" Quick sessions (projects)
-nnoremap <silent> [unite]p :<C-u>Unite -buffer-name=sessions session<CR>
-
-" Quick sources
-nnoremap <silent> [unite]a :<C-u>Unite -buffer-name=sources source<CR>
-
-" Quick snippet
-nnoremap <silent> [unite]s :<C-u>Unite -buffer-name=snippets snippet<CR>
-
-" Quickly switch lcd
-nnoremap <silent> [unite]d
-      \ :<C-u>Unite -buffer-name=change-cwd -default-action=lcd directory_mru<CR>
-
-" Quick file search
-nnoremap <silent> [unite]f :<C-u>Unite -buffer-name=files file_rec/async file/new<CR>
-
-" Quick grep from cwd
-nnoremap <silent> [unite]g :<C-u>Unite -buffer-name=grep grep:.<CR>
-
-" Quick help
-nnoremap <silent> [unite]h :<C-u>Unite -buffer-name=help help<CR>
-
-" Quick line using the word under cursor
-nnoremap <silent> [unite]l :<C-u>UniteWithCursorWord -buffer-name=search_file line<CR>
-
-" Quick MRU search
-nnoremap <silent> [unite]m :<C-u>Unite -buffer-name=mru file_mru<CR>
-
-" Quick find
-nnoremap <silent> [unite]n :<C-u>Unite -buffer-name=find find:.<CR>
-
-" Quick commands
-nnoremap <silent> [unite]c :<C-u>Unite -buffer-name=commands command<CR>
-
-" Quick bookmarks
-nnoremap <silent> [unite]b :<C-u>Unite -buffer-name=bookmarks bookmark<CR>
-
-" Fuzzy search from current buffer
-" nnoremap <silent> [unite]b :<C-u>UniteWithBufferDir
-      " \ -buffer-name=files -prompt=%\  buffer file_mru bookmark file<CR>
-
-" Quick commands
-nnoremap <silent> [unite]; :<C-u>Unite -buffer-name=history history/command command<CR>
-
-" Custom Unite settings
-autocmd MyAutoCmd FileType unite call s:unite_settings()
-function! s:unite_settings()
-
-  nmap <buffer> <ESC> <Plug>(unite_exit)
-  imap <buffer> <ESC> <Plug>(unite_exit)
-  " imap <buffer> <c-j> <Plug>(unite_select_next_line)
-  imap <buffer> <c-j> <Plug>(unite_insert_leave)
-  nmap <buffer> <c-j> <Plug>(unite_loop_cursor_down)
-  nmap <buffer> <c-k> <Plug>(unite_loop_cursor_up)
-  imap <buffer> <c-a> <Plug>(unite_choose_action)
-  imap <buffer> <Tab> <Plug>(unite_exit_insert)
-  imap <buffer> jj <Plug>(unite_insert_leave)
-  imap <buffer> <C-w> <Plug>(unite_delete_backward_word)
-  imap <buffer> <C-u> <Plug>(unite_delete_backward_path)
-  imap <buffer> '     <Plug>(unite_quick_match_default_action)
-  nmap <buffer> '     <Plug>(unite_quick_match_default_action)
-  nmap <buffer> <C-r> <Plug>(unite_redraw)
-  imap <buffer> <C-r> <Plug>(unite_redraw)
-  inoremap <silent><buffer><expr> <C-s> unite#do_action('split')
-  nnoremap <silent><buffer><expr> <C-s> unite#do_action('split')
-  inoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
-  nnoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
-
-  let unite = unite#get_current_unite()
-  if unite.buffer_name =~# '^search'
-    nnoremap <silent><buffer><expr> r     unite#do_action('replace')
-  else
-    nnoremap <silent><buffer><expr> r     unite#do_action('rename')
-  endif
-
-  nnoremap <silent><buffer><expr> cd     unite#do_action('lcd')
-
-  " Using Ctrl-\ to trigger outline, so close it using the same keystroke
-  if unite.buffer_name =~# '^outline'
-    imap <buffer> <C-\> <Plug>(unite_exit)
-  endif
-
-  " Using Ctrl-/ to trigger line, close it using same keystroke
-  if unite.buffer_name =~# '^search_file'
-    imap <buffer> <C-_> <Plug>(unite_exit)
-  endif
-endfunction
-
-" Start in insert mode
-let g:unite_enable_start_insert = 1
-
-" Enable short source name in window
-" let g:unite_enable_short_source_names = 1
-
-" Enable history yank source
-let g:unite_source_history_yank_enable = 1
-
-" Open in bottom right
-let g:unite_split_rule = "botright"
-
-" Shorten the default update date of 500ms
-let g:unite_update_time = 200
-
-let g:unite_source_file_mru_limit = 1000
-let g:unite_cursor_line_highlight = 'TabLineSel'
-" let g:unite_abbr_highlight = 'TabLine'
-
-let g:unite_source_file_mru_filename_format = ':~:.'
-let g:unite_source_file_mru_time_format = ''
-
-" For ack.
-if executable('ack-grep')
-  let g:unite_source_grep_command = 'ack-grep'
-  " Match whole word only. This might/might not be a good idea
-  let g:unite_source_grep_default_opts = '--no-heading --no-color -a -w'
-  let g:unite_source_grep_recursive_opt = ''
-elseif executable('ack')
-  let g:unite_source_grep_command = 'ack'
-  let g:unite_source_grep_default_opts = '--no-heading --no-color -a -w'
-  let g:unite_source_grep_recursive_opt = ''
-endif
-
-"===============================================================================
-" Unite Sessions
-"===============================================================================
-
-" Save session automatically.
-let g:unite_source_session_enable_auto_save = 1
-
-" Pop up session selection if no file is specified
-" TODO: Why does this not work when Vim isn't run from tmux???!
-autocmd MyAutoCmd VimEnter * call s:unite_session_on_enter()
-function! s:unite_session_on_enter()
-  if !argc() && !exists("g:start_session_from_cmdline")
-    Unite -buffer-name=sessions session
-  endif
-endfunction
-
 NeoBundleCheck
