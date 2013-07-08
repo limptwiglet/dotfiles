@@ -86,7 +86,11 @@ filetype plugin indent on			" Needed for NeoBundle
 	let g:solarized_contract="high"
 	let g:solarized_termcolors=256
 
-	set guifont=Inconsolata-dz-Powerline:h12
+	if has("gui_running")
+        set guifont=Monaco:h12
+	else
+        set guifont=Inconsolata-dz-Powerline:h12
+    endif
 
 	set cursorline					" highlight current line
 	set cursorcolumn                		" highlight current column
