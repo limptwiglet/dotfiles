@@ -34,20 +34,24 @@
 
 	" Style
 	NeoBundle 'altercation/vim-colors-solarized'
-	NeoBundle 'Lokaltog/vim-powerline'
+	"NeoBundle 'Lokaltog/vim-powerline'
+    NeoBundle 'bling/vim-airline'
+	"NeoBundle 'millermedeiros/vim-statline'
 	NeoBundle 'myusuf3/numbers.vim'
 
 	" Editing
 	NeoBundle 'tpope/vim-surround'
 	NeoBundle 'scrooloose/nerdcommenter'
 	NeoBundle 'Townk/vim-autoclose'
-	NeoBundle 'Shougo/neocomplcache.vim'
+	"NeoBundle 'Shougo/neocomplcache.vim'
+	NeoBundle 'Valloric/YouCompleteMe'
 
 	" Syntax
 	NeoBundle 'scrooloose/syntastic'
 	NeoBundle 'wavded/vim-stylus'
 	NeoBundle 'jelera/vim-javascript-syntax'
 	NeoBundle 'tsaleh/vim-matchit'
+	NeoBundle 'nono/vim-handlebars'
 
 	" Snippets
 	"NeoBundle 'SirVer/ultisnips'
@@ -55,9 +59,15 @@
 
 	" File Navigation
 	NeoBundle 'scrooloose/nerdtree'
+	NeoBundle 'tyok/nerdtree-ack'
 	NeoBundle 'thisivan/vim-bufexplorer'
 	NeoBundle 'vim-scripts/bufkill.vim'
 	NeoBundle 'kien/ctrlp.vim'
+
+	" Shel
+	NeoBundle 'Shougo/vimshell.vim'
+
+	"NeoBundle 'christoomey/vim-tmux-navigator'
 
 
 filetype plugin indent on			" Needed for NeoBundle
@@ -71,9 +81,12 @@ filetype plugin indent on			" Needed for NeoBundle
 	syntax enable
 	set background=dark
 	colorscheme solarized
+	let g:solarized_termtrans = 1
 	let g:solarized_visibility="high"
+	let g:solarized_contract="high"
+	let g:solarized_termcolors=256
 
-	set guifont=Monaco\ for\ Powerline:h12
+	set guifont=Inconsolata-dz-Powerline:h12
 
 	set cursorline					" highlight current line
 	set cursorcolumn                		" highlight current column
@@ -90,16 +103,20 @@ filetype plugin indent on			" Needed for NeoBundle
 	set history=1000
 	set hidden
 	set ttyfast
+	set lazyredraw
 
 	set laststatus=2
 
+	set guioptions-=r
+	set guioptions-=L
+
 	" Editing
-	set tabstop=4     				" a tab is four spaces
-	set backspace=indent,eol,start 			" allow backspacing over everything in insert mode
+    set tabstop=4     				" a tab is four spaces
+	set backspace=indent,eol,start 	" allow backspacing over everything in insert mode
 	set autoindent    				" always set autoindenting on
 	set copyindent    				" copy the previous indentation on autoindenting
-	set shiftwidth=4  				" number of spaces to use for autoindenting
-	set shiftround    				" use multiple of shiftwidth when indenting with '<' and '>'
+    set shiftwidth=4  				" number of spaces to use for autoindenting
+    set shiftround    				" use multiple of shiftwidth when indenting with '<' and '>'
 	set showmatch     				" set show matching parenthesis
 	set ignorecase    				" ignore case when searching
 	set smartcase     				" ignore case if search pattern is all lowercase, case-sensitive otherwise
@@ -122,6 +139,10 @@ filetype plugin indent on			" Needed for NeoBundle
 	autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
 
 
+" Filetype
+    autocmd FileType stylus setlocal shiftwidth=2 tabstop=2
+
+
 " Plugin settings
 	" NERDTree
 	map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
@@ -137,7 +158,7 @@ filetype plugin indent on			" Needed for NeoBundle
 	let NERDTreeBookmarksFile=expand("$HOME/.vim/NERDTreeBookmarks")
 
 	" Powerline
-    let g:Powerline_symbols = 'fancy'
+	"let g:Powerline_symbols = 'fancy'
 
 	" CtrlP
 	let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
@@ -195,10 +216,6 @@ filetype plugin indent on			" Needed for NeoBundle
     if has('conceal')
     set conceallevel=2 concealcursor=i
     endif
-
-
-    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 
     " Unite
     " Use the fuzzy matcher for everything
@@ -313,7 +330,16 @@ filetype plugin indent on			" Needed for NeoBundle
       let g:unite_source_grep_recursive_opt = ''
     endif
 
+    " VimShell
+    let g:vimshell_editor_command="/usr/local/Cellar/macvim/7.3-66/bin/mvim"
 
+
+    " Statline
+    let g:statline_fugitive = 1
+
+
+    " Fugitive
+	map <leader>gs :Gstatus<CR>
 
 
 NeoBundleCheck
