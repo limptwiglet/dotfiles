@@ -54,8 +54,8 @@
 	NeoBundle 'nono/vim-handlebars'
 
 	" Snippets
-	"NeoBundle 'SirVer/ultisnips'
-	NeoBundle  'Shougo/neosnippet.vim'
+    NeoBundle 'SirVer/ultisnips'
+	"NeoBundle  'Shougo/neosnippet.vim'
 
 	" File Navigation
 	NeoBundle 'scrooloose/nerdtree'
@@ -165,38 +165,6 @@ filetype plugin indent on			" Needed for NeoBundle
 
 	" Syntastic
     let g:syntastic_warning_symbol='⚠'
-
-    " NeoComplCache
-    " Disable AutoComplPop.
-    let g:acp_enableAtStartup = 0
-    " Use neocomplcache.
-    let g:neocomplcache_enable_at_startup = 1
-    " Use smartcase.
-    let g:neocomplcache_enable_smart_case = 1
-    
-    " Define dictionary.
-    let g:neocomplcache_dictionary_filetype_lists = {
-        \ 'default' : '',
-        \ 'vimshell' : $HOME.'/.vimshell_hist',
-        \ 'scheme' : $HOME.'/.gosh_completions'
-            \ }
-    " Plugin key-mappings.
-    inoremap <expr><C-g>     neocomplcache#undo_completion()
-    inoremap <expr><C-l>     neocomplcache#complete_common_string()
-
-    inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-    function! s:my_cr_function()
-    return neocomplcache#smart_close_popup() . "\<CR>"
-    " For no inserting <CR> key.
-    return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-    endfunction
-
-    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-    autocmd FileType styl setlocal omnifunc=csscomplete#CompleteCSS
-    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
     " NeoSnippet
     " Plugin key-mappings.
@@ -340,6 +308,21 @@ filetype plugin indent on			" Needed for NeoBundle
 
     " Fugitive
 	map <leader>gs :Gstatus<CR>
+
+
+	"-------------------------------------------------------------------
+	"" YouCompleteMe
+	"-------------------------------------------------------------------
+    let g:ycm_autoclose_preview_window_after_completion=1
+
+   " Enable omni completion
+    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+    autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+    autocmd FileType java setlocal omnifunc=eclim#java#complete#CodeComplete
 
 
 NeoBundleCheck
