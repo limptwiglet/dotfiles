@@ -1,79 +1,10 @@
- set nocompatible               " Be iMproved
+set nocompatible               " Be iMproved
+filetype off
 
- if has('vim_starting')
-   set runtimepath+=~/.vim/bundle/neobundle.vim/
- endif
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
 
- call neobundle#rc(expand('~/.vim/bundle/'))
-
- " Let NeoBundle manage NeoBundle
- NeoBundleFetch 'Shougo/neobundle.vim'
-
- NeoBundle 'Shougo/vimproc', { 'build': {
-       \   'windows': 'make -f make_mingw32.mak',
-       \   'cygwin': 'make -f make_cygwin.mak',
-       \   'mac': 'make -f make_mac.mak',
-       \   'unix': 'make -f make_unix.mak',
-       \ } }
-
-
-" Packages
-    " Fuzzy Searches
-    NeoBundle 'mileszs/ack.vim'
-    NeoBundle 'Shougo/unite.vim'
-    NeoBundle 'Shougo/unite-outline'
-    NeoBundle 'Shougo/unite-help'
-    NeoBundle 'Shougo/unite-session'
-    NeoBundle 'thinca/vim-unite-history'
-
-	" Version Control
-	NeoBundle 'tpope/vim-fugitive'
-
-	" Movement
-	NeoBundle 'Lokaltog/vim-easymotion'
-
-	" Style
-	NeoBundle 'altercation/vim-colors-solarized'
-	"NeoBundle 'Lokaltog/vim-powerline'
-    NeoBundle 'bling/vim-airline'
-	"NeoBundle 'millermedeiros/vim-statline'
-	NeoBundle 'myusuf3/numbers.vim'
-
-	" Editing
-	NeoBundle 'tpope/vim-surround'
-	NeoBundle 'scrooloose/nerdcommenter'
-	NeoBundle 'Townk/vim-autoclose'
-    NeoBundle 'Shougo/neocomplcache.vim'
-	"NeoBundle 'Valloric/YouCompleteMe'
-	NeoBundle 'sjl/vitality.vim'
-
-	" Syntax
-	NeoBundle 'scrooloose/syntastic'
-	NeoBundle 'wavded/vim-stylus'
-	NeoBundle 'jelera/vim-javascript-syntax'
-	NeoBundle 'tsaleh/vim-matchit'
-	NeoBundle 'nono/vim-handlebars'
-
-	" Snippets
-    "NeoBundle 'SirVer/ultisnips'
-    NeoBundle  'Shougo/neosnippet.vim'
-
-	" File Navigation
-	NeoBundle 'scrooloose/nerdtree'
-	NeoBundle 'tyok/nerdtree-ack'
-	NeoBundle 'thisivan/vim-bufexplorer'
-	NeoBundle 'vim-scripts/bufkill.vim'
-	NeoBundle 'kien/ctrlp.vim'
-
-	" Shel
-	NeoBundle 'Shougo/vimshell.vim'
-
-	" Session
-	NeoBundle 'xolox/vim-misc'
-	NeoBundle 'xolox/vim-session'
-
-	"NeoBundle 'christoomey/vim-tmux-navigator'
-
+source ~/.vim/bundles
 
 filetype plugin indent on			" Needed for NeoBundle
 
@@ -171,15 +102,8 @@ filetype plugin indent on			" Needed for NeoBundle
     let g:syntastic_warning_symbol='⚠'
 	
 	"-------------------------------------------------------------------
-	"" Session
-	"-------------------------------------------------------------------
-	    let g:session_autoload = 'no'
-	
-	"-------------------------------------------------------------------
 	"" NeoComplCache
 	"-------------------------------------------------------------------
-        " Disable auto popup
-         let g:neocomplcache_disable_auto_complete = 1
         " Disable AutoComplPop. Comment out this line if AutoComplPop is not installed.
         let g:acp_enableAtStartup = 1
         " Launches neocomplcache automatically on vim startup.
@@ -208,138 +132,38 @@ filetype plugin indent on			" Needed for NeoBundle
 	"-------------------------------------------------------------------
 	"" NeoSnippet
 	"-------------------------------------------------------------------
-        imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-        smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-        xmap <C-k>     <Plug>(neosnippet_expand_target)
+	let g:acp_enableAtStartup = 0
+    let g:neocomplete#enable_at_startup = 1
+    let g:neocomplete#enable_smart_case = 1
+    let g:neocomplete#enable_auto_delimiter = 1
+    let g:neocomplete#max_list = 15
+    let g:neocomplete#force_overwrite_completefunc = 1	
+	let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+	imap <C-k> <Plug>(neosnippet_expand_or_jump)
+    smap <C-k> <Plug>(neosnippet_expand_or_jump)
 
-        " SuperTab like snippets behavior.
-        imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-        \ "\<Plug>(neosnippet_expand_or_jump)"
-        \: pumvisible() ? "\<C-n>" : "\<TAB>"
-        smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-        \ "\<Plug>(neosnippet_expand_or_jump)"
-        \: "\<TAB>"
+    " Enable omnicompletion
+    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+    autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+    autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
-        " For snippet_complete marker.
-        if has('conceal')
-        set conceallevel=2 concealcursor=i
-        endif
+    let g:neocomplete#sources#omni#input_patterns = {}
 
-        " Unite
-        " Use the fuzzy matcher for everything
-        call unite#filters#matcher_default#use(['matcher_fuzzy'])
+    let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+    let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+    let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+    let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+    let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
 
-        " Use the rank sorter for everything
-        call unite#filters#sorter_default#use(['sorter_rank'])
+    let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 
-        " Set up some custom ignores
-        call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
-            \ 'ignore_pattern', join([
-            \ '\.git/',
-            \ 'git5/.*/review/',
-            \ 'google/obj/',
-            \ ], '\|'))
+    let g:neosnippet#enable_snipmate_compatibility = 1
 
-    " Map space to the prefix for Unite
-    nnoremap [unite] <Nop>
-    nmap <space> [unite]
-
-    " General fuzzy search
-    nnoremap <silent> [unite]<space> :<C-u>Unite
-          \ -buffer-name=files buffer file_mru bookmark file_rec/async<CR>
-
-    " Quick registers
-    nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
-
-    " Quick buffer and mru
-    nnoremap <silent> [unite]u :<C-u>Unite -buffer-name=buffers buffer file_mru<CR>
-
-    " Quick yank history
-    nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yanks history/yank<CR>
-
-    " Quick outline
-    nnoremap <silent> [unite]o :<C-u>Unite -buffer-name=outline -vertical outline<CR>
-
-    " Quick sessions (projects)
-    nnoremap <silent> [unite]p :<C-u>Unite -buffer-name=sessions session<CR>
-
-    " Quick sources
-    nnoremap <silent> [unite]a :<C-u>Unite -buffer-name=sources source<CR>
-
-    " Quick snippet
-    nnoremap <silent> [unite]s :<C-u>Unite -buffer-name=snippets snippet<CR>
-
-    " Quickly switch lcd
-    nnoremap <silent> [unite]d
-          \ :<C-u>Unite -buffer-name=change-cwd -default-action=lcd directory_mru<CR>
-
-    " Quick file search
-    nnoremap <silent> [unite]f :<C-u>Unite -buffer-name=files file_rec/async file/new<CR>
-
-    " Quick grep from cwd
-    nnoremap <silent> [unite]g :<C-u>Unite -buffer-name=grep grep:.<CR>
-
-    " Quick help
-    nnoremap <silent> [unite]h :<C-u>Unite -buffer-name=help help<CR>
-
-    " Quick line using the word under cursor
-    nnoremap <silent> [unite]l :<C-u>UniteWithCursorWord -buffer-name=search_file line<CR>
-
-    " Quick MRU search
-    nnoremap <silent> [unite]m :<C-u>Unite -buffer-name=mru file_mru<CR>
-
-    " Quick find
-    nnoremap <silent> [unite]n :<C-u>Unite -buffer-name=find find:.<CR>
-
-    " Quick commands
-    nnoremap <silent> [unite]c :<C-u>Unite -buffer-name=commands command<CR>
-
-    " Quick bookmarks
-    nnoremap <silent> [unite]b :<C-u>Unite -buffer-name=bookmarks bookmark<CR>
-
-    " Fuzzy search from current buffer
-    " nnoremap <silent> [unite]b :<C-u>UniteWithBufferDir
-          " \ -buffer-name=files -prompt=%\  buffer file_mru bookmark file<CR>
-
-    " Quick commands
-    nnoremap <silent> [unite]; :<C-u>Unite -buffer-name=history history/command command<CR>
-
-    " Start in insert mode
-    let g:unite_enable_start_insert = 1
-
-    " Enable short source name in window
-    " let g:unite_enable_short_source_names = 1
-
-    " Enable history yank source
-    let g:unite_source_history_yank_enable = 1
-
-    " Open in bottom right
-    let g:unite_split_rule = "botright"
-
-    " Shorten the default update date of 500ms
-    let g:unite_update_time = 200
-
-    let g:unite_source_file_mru_limit = 1000
-    let g:unite_cursor_line_highlight = 'TabLineSel'
-    " let g:unite_abbr_highlight = 'TabLine'
-
-    let g:unite_source_file_mru_filename_format = ':~:.'
-    let g:unite_source_file_mru_time_format = ''
-
-    " For ack.
-    if executable('ack-grep')
-      let g:unite_source_grep_command = 'ack-grep'
-      " Match whole word only. This might/might not be a good idea
-      let g:unite_source_grep_default_opts = '--no-heading --no-color -a -w'
-      let g:unite_source_grep_recursive_opt = ''
-    elseif executable('ack')
-      let g:unite_source_grep_command = 'ack'
-      let g:unite_source_grep_default_opts = '--no-heading --no-color -a -w'
-      let g:unite_source_grep_recursive_opt = ''
-    endif
-
-    " VimShell
-    let g:vimshell_editor_command="/usr/local/Cellar/macvim/7.3-66/bin/mvim"
+    set completeopt-=preview
 
 
     " Statline
@@ -349,20 +173,3 @@ filetype plugin indent on			" Needed for NeoBundle
     " Fugitive
 	map <leader>gs :Gstatus<CR>
 
-
-	"-------------------------------------------------------------------
-	"" YouCompleteMe
-	"-------------------------------------------------------------------
-    let g:ycm_autoclose_preview_window_after_completion=1
-
-    " Enable omni completion
-    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-    autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-    autocmd FileType java setlocal omnifunc=eclim#java#complete#CodeComplete
-
-
-NeoBundleCheck
