@@ -1,0 +1,10 @@
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+NeoBundle 'Shougo/vimproc'
+
+" Version control
+NeoBundle 'tpope/vim-fugitive'
+
+" Navigation
+NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'kien/ctrlp.vim'
