@@ -92,14 +92,17 @@ filetype plugin indent on			" Needed for NeoBundle
 	let g:nerdtree_tabs_open_on_gui_startup=0
 	let NERDTreeBookmarksFile=expand("$HOME/.vim/NERDTreeBookmarks")
 
-	" Powerline
-	"let g:Powerline_symbols = 'fancy'
+	" { Airline
+		"let g:airline_powerline_fonts = 1
+    " }
 
-	" CtrlP
-	let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
+	" { CtrlP
+        let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
+    " }
 
-	" Syntastic
-    let g:syntastic_warning_symbol='⚠'
+	" { Syntastic
+        let g:syntastic_warning_symbol='⚠'
+    " }
 	
 	" NeoComplCache {
         "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
