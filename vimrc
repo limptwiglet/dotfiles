@@ -56,7 +56,7 @@ filetype plugin indent on			" Needed for NeoBundle
 	set ignorecase    				" ignore case when searching
 	set smartcase     				" ignore case if search pattern is all lowercase, case-sensitive otherwise
 	set smarttab      				" insert tabs on the start of a line according to shiftwidth, not tabstop
-	set expandtab
+	set noexpandtab
 
 	" Key mappings
 	let mapleader = ","
@@ -74,10 +74,6 @@ filetype plugin indent on			" Needed for NeoBundle
 	autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
 
 
-" Filetype
-    autocmd FileType stylus setlocal shiftwidth=2 tabstop=2
-
-
 " Plugin settings
 	" NERDTree
 	map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
@@ -91,6 +87,7 @@ filetype plugin indent on			" Needed for NeoBundle
 	let NERDTreeKeepTreeInNewTab=1
 	let g:nerdtree_tabs_open_on_gui_startup=0
 	let NERDTreeBookmarksFile=expand("$HOME/.vim/NERDTreeBookmarks")
+	let NERDTreeShowLineNumbers=0
 
 	" { Airline
 		"let g:airline_powerline_fonts = 1
