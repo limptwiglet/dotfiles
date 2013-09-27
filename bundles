@@ -9,6 +9,8 @@ Bundle 'scrooloose/nerdtree'
 
 Bundle 'kien/ctrlp.vim'
 
+Bundle 'Shougo/neocomplcache.vim'
+
 " UI
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'bling/vim-airline'
@@ -28,11 +30,11 @@ Bundle 'nono/vim-handlebars'
 Bundle 'tpope/vim-surround'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'Townk/vim-autoclose'
+Bundle 'ciaranm/detectindent'
 
 " Snippets
 Bundle  'Shougo/neosnippet.vim'
 Bundle 'honza/vim-snippets'
-Bundle 'Shougo/neocomplete.vim.git'
 Bundle 'Shougo/neosnippet'
 Bundle 'honza/vim-snippets'
 
