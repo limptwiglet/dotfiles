@@ -21,7 +21,7 @@ filetype plugin indent on			" Needed for NeoBundle
 	let g:solarized_visibility="high"
 	let g:solarized_termcolors=256
 
-    set guifont=Monaco:h12
+    set guifont=Monaco\ for\ Powerline:h12
 
 	set cursorline					" highlight current line
 	set cursorcolumn                		" highlight current column
@@ -57,6 +57,9 @@ filetype plugin indent on			" Needed for NeoBundle
 	set smartcase     				" ignore case if search pattern is all lowercase, case-sensitive otherwise
 	set smarttab      				" insert tabs on the start of a line according to shiftwidth, not tabstop
 	set noexpandtab
+	set nojoinspaces
+	set splitright
+	set splitbelow
 
 	" Key mappings
 	let mapleader = ","
@@ -65,6 +68,9 @@ filetype plugin indent on			" Needed for NeoBundle
 	map <C-K> <C-W>k<C-W>_
 	map <C-L> <C-W>l<C-W>_
 	map <C-H> <C-W>h<C-W>_"
+
+	" Find merge conflict markers
+	map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
 
 	imap jj <Esc>
 
@@ -90,7 +96,9 @@ filetype plugin indent on			" Needed for NeoBundle
 	let NERDTreeShowLineNumbers=0
 
 	" { Airline
-		"let g:airline_powerline_fonts = 1
+		let g:airline_powerline_fonts = 1
+		let g:airline_left_sep='⮀'
+		let g:airline_right_sep='⮂'
     " }
 
 	" { CtrlP
