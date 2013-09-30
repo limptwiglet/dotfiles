@@ -24,7 +24,7 @@ filetype plugin indent on			" Needed for NeoBundle
     set guifont=Monaco\ for\ Powerline:h12
 
 	set cursorline					" highlight current line
-	set cursorcolumn                		" highlight current column
+	"set cursorcolumn                		" highlight current column
 	set scrolloff=8					" min lines to keep above and below cursor
 	set linespace=0					" No extra spaces between rows
 	hi CursorLineNR ctermfg=red 			" Highlight column 80
