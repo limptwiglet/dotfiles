@@ -94,6 +94,7 @@ filetype plugin indent on			" Needed for NeoBundle
 	let g:nerdtree_tabs_open_on_gui_startup=0
 	let NERDTreeBookmarksFile=expand("$HOME/.vim/NERDTreeBookmarks")
 	let NERDTreeShowLineNumbers=0
+	let NERDTreeQuitOnOpen=1
 
 	" { Airline
 		let g:airline_powerline_fonts = 1
