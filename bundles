@@ -6,6 +6,7 @@ Bundle 'tpope/vim-fugitive'
 " Navigation
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'scrooloose/nerdtree'
+Bundle 'mileszs/ack.vim'
 
 Bundle 'kien/ctrlp.vim'
 
@@ -18,6 +19,7 @@ Bundle 'myusuf3/numbers.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'thisivan/vim-bufexplorer'
 Bundle 'vim-scripts/bufkill.vim'
+Bundle 'airblade/vim-gitgutter'
 
 " Syntax
 Bundle 'wavded/vim-stylus'
