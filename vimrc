@@ -97,6 +97,7 @@ filetype plugin indent on			" Needed for NeoBundle
 	let NERDTreeQuitOnOpen=1
 
 	" { Airline
+		let g:airline_them=badwolf
 		let g:airline_powerline_fonts = 1
 		let g:airline_left_sep='⮀'
 		let g:airline_right_sep='⮂'
