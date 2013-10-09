@@ -83,6 +83,15 @@ filetype plugin indent on			" Needed for NeoBundle
 	autocmd FileType c,cpp,java,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 	autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
 
+	" Python 
+	autocmd BufNewFile,BufRead *.py
+	    \ setlocal tabstop=4
+	    \ setlocal softtabstop=4
+	    \ setlocal shiftwidth=4
+	    \ setlocal textwidth=80
+	    \ setlocal smarttab
+	    \ setlocal expandtab
+
 
 " Plugin settings
 	" NERDTree
