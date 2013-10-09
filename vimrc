@@ -23,6 +23,10 @@ filetype plugin indent on			" Needed for NeoBundle
 
     set guifont=Monaco\ for\ Powerline:h12
 
+	" Change cursor shape in insert mode
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+
 	set cursorline					" highlight current line
 	"set cursorcolumn                		" highlight current column
 	set scrolloff=8					" min lines to keep above and below cursor
