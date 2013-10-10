@@ -84,13 +84,7 @@ filetype plugin indent on			" Needed for NeoBundle
 	autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
 
 	" Python 
-	autocmd BufNewFile,BufRead *.py
-	    \ setlocal tabstop=4
-	    \ setlocal softtabstop=4
-	    \ setlocal shiftwidth=4
-	    \ setlocal textwidth=80
-	    \ setlocal smarttab
-	    \ setlocal expandtab
+	autocmd FileType python setl ts=4 sts=4 shiftwidth=4 smarttab expandtab
 
 
 " Plugin settings
