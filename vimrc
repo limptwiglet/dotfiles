@@ -116,6 +116,7 @@ filetype plugin indent on			" Needed for NeoBundle
 
 	" { Syntastic
         let g:syntastic_warning_symbol='⚠'
+        let g:syntastic_error_symbol='✹'
     " }
 	
 	" NeoComplCache {
@@ -208,6 +209,11 @@ filetype plugin indent on			" Needed for NeoBundle
         " For perlomni.vim setting.
         " https://github.com/c9s/perlomni.vim
         let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+
+
+		imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+		smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+		xmap <C-k>     <Plug>(neosnippet_expand_target)
     " }
 
     " Statline

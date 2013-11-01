@@ -7,6 +7,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'scrooloose/nerdtree'
 Bundle 'mileszs/ack.vim'
+Bundle 'FindInNERDTree'
 
 Bundle 'kien/ctrlp.vim'
 
