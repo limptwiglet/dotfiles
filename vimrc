@@ -86,6 +86,8 @@ filetype plugin indent on			" Needed for NeoBundle
 	" Python 
 	autocmd FileType python setl ts=4 sts=4 shiftwidth=4 smarttab expandtab
 
+	"au BufNewFile,BufRead *.emblem set filetype=emblem
+
 
 " Plugin settings
 	" NERDTree

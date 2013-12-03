@@ -28,12 +28,15 @@ Bundle 'scrooloose/syntastic'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'tsaleh/vim-matchit'
 Bundle 'nono/vim-handlebars'
+Bundle 'nono/vim-handlebars'
+Bundle 'heartsentwined/vim-emblem'
 
 " Editing
 Bundle 'tpope/vim-surround'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'Townk/vim-autoclose'
 Bundle 'ciaranm/detectindent'
+Bundle 'editorconfig/editorconfig-vim'
 
 " Snippets
 Bundle  'Shougo/neosnippet.vim'
