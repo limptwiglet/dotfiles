@@ -39,8 +39,7 @@ Bundle 'ciaranm/detectindent'
 Bundle 'editorconfig/editorconfig-vim'
 
 " Snippets
-Bundle  'Shougo/neosnippet.vim'
 Bundle 'honza/vim-snippets'
 Bundle 'Shougo/neosnippet'
-Bundle 'honza/vim-snippets'
+Bundle 'Shougo/neosnippet-snippets'
 
