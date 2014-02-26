@@ -21,7 +21,7 @@ filetype plugin indent on			" Needed for NeoBundle
 	let g:solarized_visibility="high"
 	let g:solarized_termcolors=256
 
-    set guifont=Monaco\ for\ Powerline:h12
+    set guifont=Inconsolata-dz\ for\ Powerline:h12
 
 	" Change cursor shape in insert mode
     let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
