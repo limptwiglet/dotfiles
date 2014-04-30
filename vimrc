@@ -225,3 +225,6 @@ filetype plugin indent on			" Needed for NeoBundle
     " Fugitive
 	map <leader>gs :Gstatus<CR>
 
+	map <leader>vmp :VimuxPromptCommand<CR>
+	map <leader>vm :VimuxRunLastCommand<CR>
+
