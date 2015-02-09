@@ -1,1 +1,21 @@
-NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundle 'Shougo/vimproc.vim'
+
+NeoBundle 'tpope/vim-fugitive'
+
+NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'mileszs/ack.vim'
+NeoBundle 'FindInNERDTree'
+NeoBundle 'thisivan/vim-bufexplorer'
+NeoBundle 'vim-scripts/bufkill.vim'
+
+NeoBundle 'kien/ctrlp.vim'
+
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'myusuf3/numbers.vim'
+
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'scrooloose/nerdcommenter'
+
+NeoBundle 'tpope/vim-sleuth'
