@@ -47,3 +47,12 @@ autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
 
 " Undo tree
 map <leader>ut :UndotreeToggle<CR>
+
+
+" CtrlP
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files']
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore = {
+	\ 'dir':  '\v[\/]\.(git|hg|svn|node_modules)$',
+	\ 'file': '\v\.(exe|so|dll)$',
+	\ }
