@@ -11,12 +11,12 @@ endif
 
 call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
-call neobundle#end()
 
 " Load and check bundles
 source ~/.vim/bundles
 NeoBundleCheck
 " /NeoBundle
+call neobundle#end()
 
 " General
 filetype plugin indent on
