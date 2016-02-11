@@ -19,6 +19,7 @@ NeoBundle 'benmills/vimux'
 " UI
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'bling/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'myusuf3/numbers.vim'
 
 
