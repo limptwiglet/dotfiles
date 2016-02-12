@@ -29,6 +29,9 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'spf13/vim-autoclose'
 NeoBundle 'bronson/vim-trailing-whitespace'
 
+" Sessions
+NeoBundle 'tpope/vim-obsession'
+
 
 " Formatting
 NeoBundle 'tpope/vim-sleuth'
