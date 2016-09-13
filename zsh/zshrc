@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/mark/.oh-my-zsh
+  export ZSH=/Users/markgerrard/.oh-my-zsh/
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -85,6 +85,10 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
-export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+export JAVA_HOME=$(/usr/libexec/java_home)
 source ~/.nvm/nvm.sh
 alias g='git'
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/markgerrard/.sdkman"
+[[ -s "/Users/markgerrard/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/markgerrard/.sdkman/bin/sdkman-init.sh"

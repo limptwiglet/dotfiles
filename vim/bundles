@@ -14,6 +14,7 @@ NeoBundle 'vim-scripts/bufkill.vim'
 NeoBundle 'mbbill/undotree'
 NeoBundle 'christoomey/vim-tmux-navigator'
 NeoBundle 'benmills/vimux'
+NeoBundle 'Shougo/unite.vim'
 
 
 " UI
@@ -63,3 +64,18 @@ NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'gorodinskiy/vim-coloresque'
 NeoBundle 'tpope/vim-haml'
 NeoBundle 'nono/vim-handlebars'
+
+NeoBundle 'wavded/vim-stylus'
+
+NeoBundle 'editorconfig/editorconfig-vim'
+
+NeoBundle 'Shougo/vimproc.vim', {
+\ 'build' : {
+\     'windows' : 'tools\\update-dll-mingw',
+\     'cygwin' : 'make -f make_cygwin.mak',
+\     'mac' : 'make',
+\     'linux' : 'make',
+\     'unix' : 'gmake',
+\    },
+\ }
+NeoBundle 'Shougo/vimshell.vim'
