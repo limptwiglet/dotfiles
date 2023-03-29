@@ -3,9 +3,9 @@
 echo "Bootstrapping dot files"
 
 echo "Install NERD fonts"
-git clone git@github.com:ryanoasis/nerd-fonts.git ~/.config/nerd-fonts
-cd ~/.config/nerd-fonts
-./install.sh JetBrainsMono
+mkdir -p ~/.local/share/fonts
+cd ~/.local/share/fonts && curl -fLo "JetBrains Mono Nerd Font Complete Regular.ttf" https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fontsJetBrainsMono/Ligatures/Regular/complete/JetBrains%20Mono%20Nerd%20Fon%20Complete%20Regular.ttf
+cd ~/.dotfiles
 
 echo "Setup tmux"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
