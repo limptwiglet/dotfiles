@@ -9,14 +9,14 @@ cd ~/.dotfiles
 
 echo "Setup tmux"
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-ln -s ./tmux/.tmux.conf ~/.tmux.conf
+ln -s ./tmux/.tmux.conf /home/${USER}/.tmux.conf
 
 echo "Setup zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-ln -s ./zsh/.zshrc ~/.zshrc
+ln -s ./zsh/.zshrc /home/${USER}/.zshrc
 
 echo "Setup neovim"
-ln -s ./nvim ~/.config/nvim
+ln -s ./nvim /home/${USER}/.config/nvim
 
 echo "Setup kitty"
-ln -s ./kitty ~/.config/kitty
+ln -s ./kitty /home/${USER}/.config/kitty
